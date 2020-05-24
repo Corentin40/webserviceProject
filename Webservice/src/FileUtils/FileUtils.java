@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,52 +13,51 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FileUtils {
 	
-	public HttpServletResponse VerificationXML(HttpServletRequest source, File baseXML) {
+	public HttpServletResponse VerificationBaseXML(HttpServletRequest source, File baseXML) {
 		try {
+			HttpServletResponse result = null;
 			boolean foundDate = false;
-			boolean foundHeure = false;
+			String rdvDate;
 			String line;
+			String BaliseDate = new String("<date>");
+			String BaliseHeure = new String("<heure>");
 			String sourceDate = new String("");
 			String sourceHeure = new String("");
 			File sourceXML = (File) source.getParts();
 			FileReader reader = new FileReader(sourceXML);
 			BufferedReader br = new BufferedReader(reader);
-			String date = "<date>";
-			String heure = "<heure>";
 			while ((line = br.readLine()) != null) {
 				if (line.contains("date")) {
-					sourceDate = line.substring(date.length(), date.length()+10);		
+					sourceDate = line.substring(BaliseDate.length(), BaliseDate.length()+10);		
 				}
 				if (line.contains("heure")) {
-					sourceHeure = line.substring(heure.length(), heure.length()+8);
+					sourceHeure = line.substring(BaliseHeure.length(), BaliseHeure.length()+8);
 				}
 			}
-			if (sourceDate.length()>0) {
+			rdvDate = sourceDate + " " + sourceHeure;
+			if (rdvDate.length()>18) {
 			FileReader baseReader = new FileReader(baseXML);
 			BufferedReader baseBr = new BufferedReader(baseReader);
 			while((line = baseBr.readLine())!=null) {
-				if (line.contains(sourceDate)){
+				if (line.contains(rdvDate)){
 					foundDate= true;
 				}
-				if (line.contains(sourceHeure)) {
-					foundHeure = true;
-				}
-				if (foundDate== true && foundHeure==true) {
-					return true;
-				}
-				if (line.contains("<client>")) {
-					foundHeure = false;
-					foundDate = false;
+				if (foundDate== true) {
+					result.addHeader("Réponse", "SC_FORBIDDEN");
+					return result;
 				}
 			}
-			}
-		return false;
+		}
+		result.addHeader("Réponse", "SC_ACCEPTED");
+		return result;
 		} catch (IOException | ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 		
 		
 	}
-
+	
+	
 }
