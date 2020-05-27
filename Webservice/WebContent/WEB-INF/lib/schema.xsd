@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name = "CLIENT">
+		<xs:complexType>
+		
+			<xs:sequence>
+				<xs:element name="NOM" type="xs:string"/>
+				<xs:element name="PRENOM" type="xs:string"/>
+				<xs:element name="NUMERO" type="xs:string"/>
+				<xs:element name="EMAIL" type="xs:string"/>
+				<xs:element name="RDV" type="xs:string"/>
+			</xs:sequence>
+	
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PLANNING">
+		<:xs:complexeType>
+			<xs:sequence>
+				<xs:element ref="CLIENT" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:compexType>
+	</xs:element>
+
+</xs:schema>
+
+
+		

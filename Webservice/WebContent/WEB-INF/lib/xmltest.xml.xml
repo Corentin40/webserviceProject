@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PLANNING 
+	xs:noNamespacesSchemaLocation="schema.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	>
+	<CLIENT>
+		<NOM>Khelifi</NOM>
+		<PRENOM>Amine</PRENOM>
+		<NUMERO>0678143519</NUMERO>
+		<EMAIL>amine@vitamine.fr</EMAIL>
+		<RDV>01/06/2020 15:00</RDV>
+	</CLIENT>
+	<CLIENT>
+		<NOM>Cammas</NOM>
+		<PRENOM>Corentin</PRENOM>
+		<NUMERO>0678753519</NUMERO>
+		<EMAIL>coco@vitamine.fr</EMAIL>
+		<RDV>01/06/2020 18:00</RDV>
+	</CLIENT>
+	<CLIENT>
+		<NOM>De Cet</NOM>
+		<PRENOM>Thibault</PRENOM>
+		<NUMERO>0678147519</NUMERO>
+		<EMAIL>thib@vitamine.fr</EMAIL>
+		<RDV>02/06/2020 15:00</RDV>
+	</CLIENT>
+	<CLIENT>
+		<NOM>Nawel</NOM>
+		<PRENOM>Ouadhour</PRENOM>
+		<NUMERO>0678487519</NUMERO>
+		<EMAIL>noel@vitamine.fr</EMAIL>
+		<RDV>02/06/2020 10:00</RDV>
+	</CLIENT>
+</PLANNING>
+
+		
