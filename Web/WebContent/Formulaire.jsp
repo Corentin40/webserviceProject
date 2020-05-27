@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,24 +8,26 @@
         <link type="text/css" rel="stylesheet" href="Style.css" />
     </head>
     <body>
+    
+    <c:if test="${!empty form.resultat }" > <p><c:out value ="Enregistrement du rendez-vous réussi"/></p></c:if>
         <form method="post" action="Formulaire">
             <fieldset>
                 <legend>Formulaire pour prise de rendez-vous</legend>
                 <p>Vous pouvez prendre rendez-vous via ce formulaire.</p>
                 
                  <label for="prenom">Prenom <span class="requis">*</span></label>
-                <input type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" />
-                 <span class="erreur">${erreurs['prenom']}</span>
+                <input type="text" id="prenom" name="prenom" value="<c:out value="${utilisateur.prenom}"/>" size="20" maxlength="20" required />
+            	<span class="erreur">${form.erreurs['prenom']}</span>
                 <br />
                 
                  <label for="nom">Nom <span class="requis">*</span></label>
-                <input type="text" id="nom" name="nom" value="" size="20" maxlength="20" />
-                 <span class="erreur">${erreurs['nom']}</span>
+                <input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="20" required />
+                <span class="erreur">${form.erreurs['nom']}</span>
                 <br />
                 
-                 <label for="telephone">Téléphone <span class="requis">*</span></label>
-                <input type="text" id="telephone" name="telephone" value="" size="20" maxlength="10" />
-                <span class="erreur">${erreurs['tel']}</span>
+                 <label for="tel">Téléphone <span class="requis">*</span></label>
+                <input type="tel" id="tel" name="tel" value="<c:out value="${utilisateur.tel}"/>" size="20" maxlength="10" required />
+                <span class="erreur">${form.erreurs['tel']}</span>
                 <br />
 				
 				
@@ -57,8 +60,11 @@
 				<small> Ouvert de 9h à 18h</small>
 				<br />
 				
-
-                <input type="submit" value="Valider" class="sansLabel" />
+				<button formmethod="POST" formaction="afficherFormulaire.jsp" type="submit" 
+				class="sansLabel">Valider</button>
+               
+                 <p><a href="<c:url value="afficherFormulaire.jsp"/>
+                <p class=${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
                 <br />
             </fieldset>
         </form>
