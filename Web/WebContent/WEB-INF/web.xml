@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<element>
+<web-app >
+
+	<servlet>
+		<servlet-name>CreationFormulaire</servlet-name>
+		<servlet-class>com.sdzee.servlets.CreationFormulaire</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CreationFormulaire</servlet-name>
+		<url-pattern>/formulaire</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>afficherFormulaire</servlet-name>
+		<servlet-class>com.sdzee.servlets.CreationFormulaire</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>afficherFormulaire</servlet-name>
+		<url-pattern>/afficherFormulaire</url-pattern>
+	</servlet-mapping>
+</web-app>
+</element>
